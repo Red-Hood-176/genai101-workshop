@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun Facts Display</title>
+    <style>
+        body {
+            background-color: #fff9c4; /* Light yellow */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #fbc02d; /* Dark yellow */
+        }
+
+        button {
+            background-color: #fbc02d; /* Dark yellow */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f9a825; /* Slightly darker yellow */
+        }
+
+        #factDisplay {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #f57f17; /* Darker yellow */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interesting Sun Facts</h1>
+    </header>
+    <main>
+        <button id="showFactButton">Show Next Fact</button>
+        <section id="factDisplay"></section>
+    </main>
+    <script>
+        const facts = [
+            "The Sun is a star at the center of our solar system.",
+            "The Sun is about 4.6 billion years old.",
+            "The Sun's surface temperature is around 5,500 degrees Celsius (9,932 degrees Fahrenheit).",
+            "The Sun is composed primarily of hydrogen and helium.",
+            "The Sun's gravity holds the solar system together."
+        ];
+
+        let currentFactIndex = 0;
+
+        document.getElementById('showFactButton').addEventListener('click', () => {
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.style.opacity = 0; // Start fade-out animation
+
+            setTimeout(() => {
+                factDisplay.textContent = facts[currentFactIndex];
+                factDisplay.style.opacity = 1; // Start fade-in animation
+                currentFactIndex = (currentFactIndex + 1) % facts.length;
+            }, 500); // Wait for fade-out to complete
+        });
+    </script>
+</body>
+</html>
